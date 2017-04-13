@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
+  before_action :find_post_and_check_permission , :only => [:edit, :update, :destroy]
 
   def new
     @group = Group.find(params[:group_id])
